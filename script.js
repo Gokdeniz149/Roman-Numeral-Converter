@@ -24,7 +24,7 @@ button.addEventListener("click", () => {
         output.classList.toggle("alert", true);
         output.innerText = "Please enter a valid number";
     }
-    else if (parseInt(number.value) <= -1) {
+    else if (parseInt(number.value) <= 0) {
         output.classList.remove("hidden", false);
         output.classList.toggle("alert", true);
         output.innerText = "Please enter a number greater than or equal to 1";
@@ -38,10 +38,11 @@ button.addEventListener("click", () => {
         output.classList.remove("hidden", false);
         output.classList.toggle("alert", false);
         let result = "";
+        let num = number.value
         for (const {value, numeral} of romanNumerals) {
-            while (number.value >= value) {
+            while (num >= value) {
                 result += numeral;
-                number.value -= value;
+                num -= value;
             }
         }
         output.innerText = result;
